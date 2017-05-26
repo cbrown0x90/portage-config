@@ -1,0 +1,6 @@
+#mopidy
+>dev-libs/protobuf-3.0.0
+>dev-python/protobuf-python-3.0.0
+
+#bugs
+=sys-fs/lvm2-2.02.171
