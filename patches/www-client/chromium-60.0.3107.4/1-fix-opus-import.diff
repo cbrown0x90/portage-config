@@ -1,0 +1,37 @@
+--- a/third_party/ffmpeg/libavcodec/libopus.c	2017-05-26 15:51:43.554227040 -0400
++++ b/third_party/ffmpeg/libavcodec/libopus.c	2017-05-26 15:47:30.659224992 -0400
+@@ -19,7 +19,7 @@
+  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+  */
+
+-#include <opus_defines.h>
++#include <opus/opus_defines.h>
+
+ #include "libavutil/common.h"
+ #include "libavutil/error.h"
+--- a/third_party/ffmpeg/libavcodec/libopusenc.c	2017-05-26 16:02:46.013232406 -0400
++++ b/third_party/ffmpeg/libavcodec/libopusenc.c	2017-05-26 16:01:27.520231770 -0400
+@@ -19,8 +19,8 @@
+  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+  */
+
+-#include <opus.h>
+-#include <opus_multistream.h>
++#include <opus/opus.h>
++#include <opus/opus_multistream.h>
+
+ #include "libavutil/opt.h"
+ #include "avcodec.h"
+--- a/third_party/ffmpeg/libavcodec/libopusdec.c	2017-05-26 16:02:53.428232466 -0400
++++ b/third_party/ffmpeg/libavcodec/libopusdec.c	2017-05-26 16:01:36.854231846 -0400
+@@ -19,8 +19,8 @@
+  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+  */
+
+-#include <opus.h>
+-#include <opus_multistream.h>
++#include <opus/opus.h>
++#include <opus/opus_multistream.h>
+
+ #include "libavutil/internal.h"
+ #include "libavutil/intreadwrite.h"
