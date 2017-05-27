@@ -1,0 +1,364 @@
+#git
+dev-vcs/git python_targets_python2_7 -gpg -perl
+
+#openssh
+net-misc/openssh -static
+
+#sudo
+app-admin/sudo -sendmail
+
+#wpa_supplicant
+dev-python/m2crypto python_targets_python2_7
+dev-python/typing python_targets_python2_7
+dev-lang/swig ccache
+net-wireless/wpa_supplicant ap wps uncommon-eap-types wimax dbus
+
+#cryptsetup
+sys-fs/cryptsetup urandom openssl -gcrypt
+sys-fs/lvm2 -thin -static
+
+#system
+sys-apps/coreutils gmp
+app-misc/pax-utils -seccomp
+app-shells/bash -net
+dev-libs/gmp pgo
+net-misc/iputils -filecaps
+sys-apps/openrc -netifrc -ncurses
+sys-apps/iproute2 minimal
+sys-apps/man-db -manpager gdbm
+sys-apps/shadow -cracklib
+sys-fs/eudev -hwdb
+sys-libs/gdbm berkdb
+sys-libs/zlib minizip
+sys-apps/net-tools -arp
+app-text/xmlto -text
+app-arch/gzip pic
+sys-devel/make -static
+dev-python/pypax python_targets_python3_6
+
+#gentoolkit
+sys-apps/gawk mpfr
+app-portage/gentoolkit python_targets_python3_6
+sys-apps/portage python_targets_python3_6
+
+#btrfs
+sys-fs/btrfs-progs -convert
+
+#compton
+app-text/asciidoc python_targets_python2_7 python_single_target_python2_7
+x11-misc/compton xinerama dbus opengl
+
+#overlays
+app-portage/layman python_targets_python3_6
+dev-python/chardet python_targets_python3_6
+dev-python/urllib3 python_targets_python3_6
+dev-python/idna python_targets_python3_6
+virtual/python-ipaddress python_targets_python3_6
+dev-python/ssl-fetch python_targets_python3_6
+dev-python/cffi python_targets_python3_6
+dev-python/pyopenssl python_targets_python3_6
+dev-python/PySocks python_targets_python3_6
+dev-python/pyasn1 python_targets_python3_6
+dev-python/ply python_targets_python3_6 
+dev-python/pycparser python_targets_python3_6
+dev-python/requests python_targets_python3_6
+dev-python/ndg-httpsclient python_targets_python3_6
+dev-python/six python_targets_python3_6
+dev-python/py python_targets_python3_6
+dev-python/cryptography python_targets_python3_6
+dev-python/asn1crypto python_targets_python3_6
+dev-python/pyparsing python_targets_python3_6
+
+#x11
+media-libs/mesa gallium vaapi xa -llvm -dri3 -nptl
+x11-base/xorg-server glamor xorg suid
+x11-drivers/xf86-video-intel dir sna 
+x11-libs/libva opengl egl X
+
+#image support
+media-libs/imlib2 X -mp3
+
+#dwm
+x11-libs/pango X
+x11-libs/cairo X
+media-libs/harfbuzz -fontconfig -graphite icu truetype -cairo
+
+#alsa
+media-sound/alsa-utils -libsamplerate
+
+#video support
+media-plugins/gst-plugins-meta mpeg
+
+#subtitles
+media-video/ffmpeg fribidi libass
+
+#ffmpeg
+media-video/ffmpeg hardcoded-tables alsa gmp opengl aac -encode -postproc libcaca x264 vaapi -cpu_flags_x86_ssse3 -cpu_flags_x86_sse4_1 -cpu_flags_x86_sse -cpu_flags_x86_sse2 -cpu_flags_x86_sse4_2 -cpu_flags_x86_aes -cpu_flags_x86_avx
+
+#libcaca
+media-libs/libcaca ncurses
+
+#pass
+app-crypt/pinentry qt5 -static
+app-admin/pass fish-completion dmenu X -git
+
+#dmenu
+x11-misc/dmenu xinerama
+
+#image viewer
+media-gfx/feh xinerama
+
+#locker
+x11-misc/slock -filecaps
+
+#audio support
+media-libs/flac ogg cxx
+
+#cron
+sys-process/fcron -mta -system-crontab
+
+#suspend
+sys-power/pm-utils alsa
+
+#email
+mail-client/mutt smtp imap sasl sidebar
+dev-libs/cyrus-sasl urandom
+
+#printing
+net-print/cups dbus
+app-text/poppler cxx
+net-print/hplip snmp hpcups
+net-print/cups-filters -postscript
+dev-util/gdbus-codegen python_targets_python3_6
+
+#kid3
+media-sound/kid3 -phonon flac -handbook mp4
+dev-qt/qtdeclarative -xml
+
+#tox
+net-im/qtox X
+dev-python/PyQt5 opengl multimedia
+dev-qt/qtmultimedia widgets openal
+dev-qt/qtwebkit opengl
+dev-util/scons python_targets_python2_7
+media-video/ffmpeg v4l webp vpx opus openal
+media-libs/libvpx postproc
+media-libs/openal alsa
+media-video/mpv openal
+dev-db/sqlcipher tcl
+dev-db/sqlite tcl
+x11-proto/xcb-proto python_targets_python3_6
+
+#neovim
+dev-python/neovim-python-client python_targets_python3_6
+dev-python/msgpack python_targets_python3_6
+dev-python/greenlet python_targets_python3_6
+virtual/python-greenlet python_targets_python3_6
+dev-lua/lpeg luajit
+dev-lua/mpack luajit
+app-editors/neovim -jemalloc -nvimpager python
+app-arch/libarchive -iconv -e2fsprogs -expat
+
+#fish
+dev-python/backports-lzma python_targets_python2_7
+dev-libs/libpcre2 pcre32
+
+#mednafen
+media-libs/libsndfile alsa
+games-emulation/mednafen alsa
+media-libds/libsdl joystick libcaca sound video X alsa opengl xinerama
+media-libs/audiofile flac
+
+#gnutls
+net-libs/gnutls -tools
+
+#openssl
+dev-libs/openssl -sslv3 gmp
+
+#qutebrowser
+www-client/qutebrowser python_targets_python3_6 gstreamer webengine -pdf
+dev-python/appdirs python_targets_python3_6
+dev-python/setuptools python_targets_python3_6
+dev-python/certifi python_targets_python3_6
+dev-qt/qtwebchannel qml
+dev-qt/qtcore icu
+dev-python/sip python_targets_python3_6
+dev-libs/libpcre pcre16
+dev-python/PyQt5 widgets gui printsupport webkit network python_targets_python3_6 declarative 
+dev-python/pygments python_targets_python3_6
+dev-python/PyQt5 webengine webchannel
+dev-qt/qtwebengine widgets alsa
+media-libs/libvpx svc
+media-libs/speex ogg
+net-libs/libsrtp openssl
+media-libs/libwebp swap-16bit-csp
+dev-libs/libxml2 -python -python_targets_python3_6 -icu
+dev-db/sqlite secure-delete
+dev-python/pypeg2 python_targets_python3_6
+dev-python/markupsafe python_targets_python3_6
+dev-python/lxml python_targets_python3_6
+dev-python/jinja python_targets_python3_6
+dev-python/pyyaml python_targets_python3_6
+dev-qt/qtwebkit printsupport gstreamer qml
+dev-lang/ruby -rdoc
+dev-libs/leveldb -snappy
+dev-qt/qtmultimedia alsa gstreamer qml
+x11-libs/libxcb xkb
+x11-libs/libxkbcommon X
+dev-python/packaging python_targets_python3_6
+
+#mopidy
+dev-python/setuptools python_targets_python2_7
+dev-python/packaging python_targets_python2_7
+dev-python/pykka python_targets_python2_7
+media-sound/mopidy python_targets_python2_7
+dev-python/gst-python python_targets_python2_7
+dev-libs/gobject-introspection python_single_target_python2_7 python_targets_python2_7
+media-libs/gst-plugins-base introspection alsa -pango
+www-servers/tornado python_targets_python2_7
+dev-python/zope-interface python_targets_python2_7
+dev-python/requests python_targets_python2_7
+dev-python/pyparsing python_targets_python2_7
+dev-python/asn1crypto python_targets_python2_7
+media-plugins/gst-plugins-meta aac alsa flac ogg http
+media-libs/gst-plugins-base introspection
+media-libs/gstreamer introspection -caps
+dev-python/pygobject -cairo python_targets_python2_7
+net-libs/glib-networking -libproxy -gnome
+dev-python/futures python_targets_python2_7
+dev-python/singledispatch python_targets_python2_7
+dev-python/backports-ssl-match-hostname python_targets_python2_7
+dev-python/backports-abc python_targets_python2_7
+dev-python/attrs python_targets_python2_7
+dev-python/certifi python_targets_python2_7
+dev-python/namespace-zope python_targets_python2_7
+#
+>=dev-python/urllib3-1.14 python_targets_python2_7
+>=dev-python/enum34-1.1.3 python_targets_python2_7
+>=dev-python/pyopenssl-16.0.0 python_targets_python2_7
+>=dev-python/py-1.4.31 python_targets_python2_7
+>=virtual/python-ipaddress-1.0 python_targets_python2_7
+>=dev-python/backports-1.0 python_targets_python2_7
+>=dev-python/cryptography-1.3.1 python_targets_python2_7
+>=dev-python/PySocks-1.5.6 python_targets_python2_7
+>=dev-python/pyasn1-0.1.9 python_targets_python2_7
+>=dev-python/ndg-httpsclient-0.4.0 python_targets_python2_7
+>=dev-python/chardet-2.3.0 python_targets_python2_7
+>=dev-python/ipaddress-1.0.16 python_targets_python2_7
+>=dev-python/idna-2.1 python_targets_python2_7
+#gmusic
+dev-python/six python_targets_python2_7
+dev-python/ply python_targets_python2_7
+dev-python/pycparser python_targets_python2_7
+dev-python/cffi python_targets_python2_7
+dev-python/validictory python_targets_python2_7
+media-libs/mutagen python_targets_python2_7
+dev-python/python-dateutil python_targets_python2_7
+dev-python/proboscis python_targets_python2_7
+dev-python/oauth2client python_targets_python2_7
+dev-python/pbr python_targets_python2_7
+dev-python/linecache2 python_targets_python2_7
+dev-python/traceback2 python_targets_python2_7
+dev-python/rsa python_targets_python2_7
+dev-python/httplib2 python_targets_python2_7
+dev-python/mock python_targets_python2_7
+virtual/python-funcsigs python_targets_python2_7
+dev-python/funcsigs python_targets_python2_7
+dev-python/appdirs python_targets_python2_7
+dev-python/pycryptodomex python_targets_python2_7
+dev-python/gpsoauth python_targets_python2_7
+dev-python/beautifulsoup python_targets_python2_7
+dev-python/lxml python_targets_python2_7
+dev-python/html5lib python_targets_python2_7
+dev-python/mechanicalsoup python_targets_python2_7
+dev-python/future python_targets_python2_7
+dev-python/gmusicapi python_targets_python2_7
+dev-python/decorator python_targets_python2_7
+media-plugins/mopidy-gmusic python_targets_python2_7
+virtual/python-futures python_targets_python2_7
+virtual/python-singledispatch python_targets_python2_7
+dev-python/pyasn1-modules python_targets_python2_7
+dev-libs/protobuf python python_targets_python2_7
+media-video/ffmpeg openssl encode
+
+#mpv
+media-plugins/gst-plugins-meta ffmpeg
+media-video/mpv -xv -enca -xscreensaver xinerama -uchardet libcaca vaapi python_targets_python3_6
+dev-python/docutils python_targets_python3_6
+
+#pdf
+app-text/qpdfview qt5 -sqlite dbus
+dev-qt/linguist-tools qml
+app-text/poppler qt5
+
+#irc
+net-irc/weechat python -spell python_targets_python2_7 python_single_target_python2_7 -python_single_target_python3_6
+
+#gdb
+sys-devel/gdb -server -python
+
+#python dev
+dev-python/virtualenv python_targets_python3_6
+
+#ncmpcpp
+dev-libs/boost icu nls
+
+#ebuilds
+app-portage/repoman python_targets_python3_6
+
+#rice
+games-misc/rice 3spooky pipes hackexe
+
+#parted
+sys-apps/texinfo -static
+
+#dwm
+x11-wm/dwm xinerama savedconfig
+
+#st
+x11-terms/st savedconfig
+
+#youtube-dl
+net-misc/youtube-dl offensive python_targets_python3_6
+
+#c dev
+sys-libs/glibc debug
+
+#chromium
+dev-libs/libxml2 icu
+x11-libs/gtk+:3 X
+www-client/chromium -system-ffmpeg -system-libvpx widevine -suid
+net-libs/nodejs python_targets_python2_7
+dev-python/simplejson python_targets_python2_7
+app-text/xmlto text
+dev-python/webencodings python_targets_python2_7
+
+#flac
+app-cdr/cuetools flac
+media-sound/shntool flac
+
+#kernel
+sys-kernel/linux-firmware savedconfig
+sys-apps/busybox savedconfig
+
+#java
+dev-java/java-config python_targets_python3_6
+dev-java/javatoolkit python_targets_python2_7 
+dev-java/icedtea-bin alsa gtk nsplugin cups
+dev-java/icedtea-web nsplugin
+
+#android
+sys-libs/zlib abi_x86_32
+dev-java/swt cairo
+
+#cmake
+dev-util/cmake system-jsoncpp
+
+#gimp
+media-gfx/gimp smp aalib alsa
+media-libs/libmypaint gegl
+media-libs/gegl cairo webp ffmpeg
+
+#emoji
+dev-python/nototools python_targets_python2_7
+dev-python/fonttools python_targets_python2_7
