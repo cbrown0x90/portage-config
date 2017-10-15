@@ -18,6 +18,7 @@ sys-fs/cryptsetup urandom openssl -gcrypt
 sys-fs/lvm2 -thin -static
 
 #system
+sys-devel/gcc pgo
 sys-apps/coreutils gmp
 app-misc/pax-utils -seccomp
 app-shells/bash -net
@@ -209,6 +210,7 @@ dev-qt/qtmultimedia alsa gstreamer qml
 x11-libs/libxcb xkb
 x11-libs/libxkbcommon X
 dev-python/packaging python_targets_python3_6
+dev-libs/libpcre2 pcre16
 
 #mopidy
 dev-python/setuptools python_targets_python2_7
@@ -401,6 +403,7 @@ virtual/libiconv abi_x86_32
 virtual/libudev abi_x86_32
 virtual/pkgconfig abi_x86_32
 x11-libs/gdk-pixbuf abi_x86_32
+media-libs/libpng:0 abi_x86_32
 x11-libs/gtk+:2 abi_x86_32
 x11-libs/libdrm abi_x86_32
 x11-libs/libpciaccess abi_x86_32
@@ -490,3 +493,26 @@ dev-python/pygobject cairo
 dev-util/itstool python_targets_python2_7
 dev-libs/libxml2 python python_targets_python2_7
 dev-python/pycairo python_targets_python3_6 python_targets_python2_7
+
+# nvidia
+x11-drivers/nvidia-drivers gtk3
+# required by x11-libs/libva-1.8.3::gentoo[video_cards_nvidia,-vdpau]
+# required by media-video/ffmpeg-3.3.4::gentoo[vaapi]
+# required by @selected
+# required by @world (argument)
+x11-libs/libva-vdpau-driver abi_x86_32
+# required by x11-drivers/nvidia-drivers-384.69::gentoo[X]
+# required by x11-base/xorg-drivers-1.19::gentoo[video_cards_nvidia]
+# required by x11-base/xorg-server-1.19.3::gentoo[xorg]
+# required by @selected
+# required by @world (argument)
+x11-libs/libvdpau abi_x86_32
+# required by x11-drivers/nvidia-drivers-384.69::gentoo[tools]
+# required by x11-base/xorg-drivers-1.19::gentoo[video_cards_nvidia]
+# required by x11-base/xorg-server-1.19.3::gentoo[xorg]
+# required by @selected
+# required by @world (argument)
+x11-libs/gdk-pixbuf X
+
+# broken
+=media-libs/openjpeg-2.3.0 -static-libs
