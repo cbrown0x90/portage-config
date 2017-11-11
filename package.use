@@ -47,7 +47,7 @@ sys-fs/btrfs-progs -convert
 
 #compton
 app-text/asciidoc python_targets_python2_7 python_single_target_python2_7
-x11-misc/compton xinerama dbus opengl
+x11-misc/compton xinerama dbus opengl python_targets_python3_6
 
 #overlays
 app-portage/layman python_targets_python3_6
@@ -68,7 +68,6 @@ dev-python/six python_targets_python3_6
 dev-python/py python_targets_python3_6
 dev-python/cryptography python_targets_python3_6
 dev-python/asn1crypto python_targets_python3_6
-dev-python/pyparsing python_targets_python3_6
 
 #x11
 media-libs/mesa gallium -vaapi xa -llvm -dri3 -nptl
@@ -138,6 +137,7 @@ dev-python/pygobject python_targets_python3_6
 #kid3
 media-sound/kid3 -phonon flac -handbook mp4
 dev-qt/qtdeclarative -xml
+media-libs/gst-plugins-bad X
 
 #tox
 net-im/qtox X
@@ -223,7 +223,6 @@ media-libs/gst-plugins-base introspection alsa -pango
 www-servers/tornado python_targets_python2_7
 dev-python/zope-interface python_targets_python2_7
 dev-python/requests python_targets_python2_7
-dev-python/pyparsing python_targets_python2_7
 dev-python/asn1crypto python_targets_python2_7
 media-plugins/gst-plugins-meta aac alsa flac ogg http
 media-libs/gst-plugins-base introspection
@@ -330,21 +329,8 @@ x11-wm/dwm xinerama savedconfig
 #st
 x11-terms/st savedconfig
 
-#youtube-dl
-net-misc/youtube-dl offensive python_targets_python3_6
-
 #c dev
 sys-libs/glibc debug
-
-#chromium
-dev-libs/libxml2 icu
-x11-libs/gtk+:3 X
-www-client/chromium -system-ffmpeg -system-libvpx -system-icu widevine -suid
-net-libs/nodejs python_targets_python2_7
-dev-python/simplejson python_targets_python2_7
-app-text/xmlto text
-dev-python/webencodings python_targets_python2_7
-dev-util/gdbus-codegen python_targets_python2_7
 
 #flac
 app-cdr/cuetools flac
@@ -375,9 +361,6 @@ media-libs/gegl cairo webp ffmpeg
 #emoji
 dev-python/nototools python_targets_python2_7
 dev-python/fonttools python_targets_python2_7
-
-#qemu
-app-emulation/qemu -static python_targets_python2_7 alsa opengl usb gtk
 
 #steam
 gnome-base/gconf python_targets_python2_7
@@ -433,7 +416,6 @@ x11-proto/xf86vidmodeproto abi_x86_32
 x11-proto/xproto abi_x86_32
 x11-libs/libva abi_x86_32
 x11-libs/libva-intel-driver abi_x86_32
-#media-libs/libpng abi_x86_32
 media-libs/jasper abi_x86_32
 media-libs/tiff abi_x86_32
 app-arch/xz-utils abi_x86_32
@@ -516,3 +498,21 @@ x11-libs/gdk-pixbuf X
 
 # broken
 =media-libs/openjpeg-2.3.0 -static-libs
+
+# firefox
+www-client/firefox bindist hwaccel pgo bindist
+x11-base/xorg-server xvfb
+dev-lang/python:2.7 sqlite
+media-libs/libpng apng
+sys-devel/clang python_targets_python2_7 -doc default-compiler-rt
+sys-devel/clang-runtime -openmp
+
+# testdisk
+app-admin/testdisk ewf ntfs
+app-forensics/libewf bfio
+
+# fonts
+media-fonts/noto cjk
+
+# wireshark
+app-text/xmlto text
