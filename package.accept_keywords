@@ -1,4 +1,5 @@
 =x11-misc/j4-dmenu-desktop-9999 **
-=www-client/qutebrowser-9999 **
 sys-devel/gcc **
 =x11-terms/st-9999 **
+=x11-libs/libva-9999 **
+=x11-wm/dwm-9999 **
