@@ -36,6 +36,7 @@ app-text/xmlto -text
 app-arch/gzip pic
 sys-devel/make -static
 dev-python/pypax python_targets_python3_6
+sys-apps/debianutils -installkernel
 
 #gentoolkit
 sys-apps/gawk mpfr
@@ -43,7 +44,7 @@ app-portage/gentoolkit python_targets_python3_6
 sys-apps/portage python_targets_python3_6
 
 #btrfs
-sys-fs/btrfs-progs -convert
+sys-fs/btrfs-progs -convert -zstd
 
 #compton
 app-text/asciidoc python_targets_python2_7 python_single_target_python2_7
@@ -60,9 +61,10 @@ dev-python/cffi python_targets_python3_6
 dev-python/pyopenssl python_targets_python3_6
 dev-python/PySocks python_targets_python3_6
 dev-python/pyasn1 python_targets_python3_6
-dev-python/ply python_targets_python3_6 
+dev-python/ply python_targets_python3_6
 dev-python/pycparser python_targets_python3_6
 dev-python/requests python_targets_python3_6
+dev-python/certifi python_targets_python3_6
 dev-python/ndg-httpsclient python_targets_python3_6
 dev-python/six python_targets_python3_6
 dev-python/py python_targets_python3_6
@@ -72,7 +74,7 @@ dev-python/asn1crypto python_targets_python3_6
 #x11
 media-libs/mesa gallium -vaapi xa -llvm -dri3 -nptl
 x11-base/xorg-server glamor xorg suid
-x11-drivers/xf86-video-intel dir sna 
+x11-drivers/xf86-video-intel dri dri3 sna
 x11-libs/libva opengl egl X
 
 #image support
@@ -121,7 +123,8 @@ sys-process/fcron -mta -system-crontab
 sys-power/pm-utils alsa
 
 #email
-mail-client/mutt smtp imap sasl sidebar
+mail-client/mutt smtp imap sasl sidebar -lmdb gdbm pgp_classic
+#mail-client/mutt smtp imap sasl sidebar pgp_classic
 dev-libs/cyrus-sasl urandom
 
 #printing
@@ -138,6 +141,9 @@ dev-python/pygobject python_targets_python3_6
 media-sound/kid3 -phonon flac -handbook mp4
 dev-qt/qtdeclarative -xml
 media-libs/gst-plugins-bad X
+x11-libs/libxkbcommon X
+x11-libs/libxcb xkb
+dev-libs/libpcre2 pcre16
 
 #tox
 net-im/qtox X
@@ -180,37 +186,37 @@ net-libs/gnutls -tools
 dev-libs/openssl -sslv3 gmp
 
 #qutebrowser
-www-client/qutebrowser python_targets_python3_6 gstreamer webengine -pdf
-dev-python/appdirs python_targets_python3_6
-dev-python/setuptools python_targets_python3_6
-dev-python/certifi python_targets_python3_6
-dev-qt/qtwebchannel qml
-dev-qt/qtcore icu
-dev-python/sip python_targets_python3_6
-dev-libs/libpcre pcre16
-dev-python/PyQt5 widgets gui printsupport webkit network python_targets_python3_6 declarative 
-dev-python/pygments python_targets_python3_6
-dev-python/PyQt5 webengine webchannel
-dev-qt/qtwebengine widgets alsa
-media-libs/libvpx svc
-media-libs/speex ogg
-net-libs/libsrtp openssl
-media-libs/libwebp swap-16bit-csp
-dev-libs/libxml2 -python -python_targets_python3_6 -icu
-dev-db/sqlite secure-delete
-dev-python/pypeg2 python_targets_python3_6
-dev-python/markupsafe python_targets_python3_6
-dev-python/lxml python_targets_python3_6
-dev-python/jinja python_targets_python3_6
-dev-python/pyyaml python_targets_python3_6
-dev-qt/qtwebkit printsupport gstreamer qml
-dev-lang/ruby -rdoc
-dev-libs/leveldb -snappy
-dev-qt/qtmultimedia alsa gstreamer qml
-x11-libs/libxcb xkb
-x11-libs/libxkbcommon X
-dev-python/packaging python_targets_python3_6
-dev-libs/libpcre2 pcre16
+#www-client/qutebrowser python_targets_python3_6 gstreamer webengine -pdf
+#dev-python/appdirs python_targets_python3_6
+#dev-python/setuptools python_targets_python3_6
+#dev-python/certifi python_targets_python3_6
+#dev-qt/qtwebchannel qml
+#dev-qt/qtcore icu
+#dev-python/sip python_targets_python3_6
+#dev-libs/libpcre pcre16
+#dev-python/PyQt5 widgets gui printsupport webkit network python_targets_python3_6 declarative
+#dev-python/pygments python_targets_python3_6
+#dev-python/PyQt5 webengine webchannel
+#dev-qt/qtwebengine widgets alsa
+#media-libs/libvpx svc
+#media-libs/speex ogg
+#net-libs/libsrtp openssl
+#media-libs/libwebp swap-16bit-csp
+#dev-libs/libxml2 -python -python_targets_python3_6 -icu
+#dev-db/sqlite secure-delete
+#dev-python/pypeg2 python_targets_python3_6
+#dev-python/markupsafe python_targets_python3_6
+#dev-python/lxml python_targets_python3_6
+#dev-python/jinja python_targets_python3_6
+#dev-python/pyyaml python_targets_python3_6
+#dev-qt/qtwebkit printsupport gstreamer qml
+#dev-lang/ruby -rdoc
+#dev-libs/leveldb -snappy
+#dev-qt/qtmultimedia alsa gstreamer qml
+#x11-libs/libxcb xkb
+#x11-libs/libxkbcommon X
+#dev-python/packaging python_targets_python3_6
+#dev-libs/libpcre2 pcre16
 
 #mopidy
 dev-python/setuptools python_targets_python2_7
@@ -289,11 +295,13 @@ virtual/python-futures python_targets_python2_7
 virtual/python-singledispatch python_targets_python2_7
 dev-python/pyasn1-modules python_targets_python2_7
 dev-libs/protobuf python python_targets_python2_7
+dev-python/protobuf-python python_targets_python2_7
+dev-python/namespace-google python_targets_python2_7
 media-video/ffmpeg openssl encode
 
 #mpv
 media-plugins/gst-plugins-meta ffmpeg
-media-video/mpv -xv -enca -xscreensaver xinerama -uchardet libcaca vaapi python_targets_python3_6
+media-video/mpv -xv -uchardet libcaca python_targets_python3_6 cli drm -lua
 dev-python/docutils python_targets_python3_6
 
 #pdf
@@ -309,6 +317,7 @@ sys-devel/gdb -server -python
 
 #python dev
 dev-python/virtualenv python_targets_python3_6
+dev-python/setuptools python_targets_python3_6
 
 #ncmpcpp
 dev-libs/boost icu nls
@@ -342,7 +351,7 @@ sys-apps/busybox savedconfig
 
 #java
 dev-java/java-config python_targets_python3_6
-dev-java/javatoolkit python_targets_python2_7 
+dev-java/javatoolkit python_targets_python2_7
 dev-java/icedtea-bin alsa gtk nsplugin cups
 dev-java/icedtea-web nsplugin
 
@@ -357,10 +366,7 @@ dev-util/cmake system-jsoncpp
 media-gfx/gimp smp aalib alsa
 media-libs/libmypaint gegl
 media-libs/gegl cairo webp ffmpeg
-
-#emoji
-dev-python/nototools python_targets_python2_7
-dev-python/fonttools python_targets_python2_7
+media-libs/libwebp swap-16bit-csp
 
 #steam
 gnome-base/gconf python_targets_python2_7
@@ -465,7 +471,7 @@ virtual/opengl abi_x86_32
 
 # discord
 sys-libs/libcxx -libcxxabi -libunwind
-sys-devel/llvm -doc 
+sys-devel/llvm -doc
 sys-devel/gcc cxx
 
 # meld
@@ -476,31 +482,8 @@ dev-util/itstool python_targets_python2_7
 dev-libs/libxml2 python python_targets_python2_7
 dev-python/pycairo python_targets_python3_6 python_targets_python2_7
 
-# nvidia
-x11-drivers/nvidia-drivers gtk3
-# required by x11-libs/libva-1.8.3::gentoo[video_cards_nvidia,-vdpau]
-# required by media-video/ffmpeg-3.3.4::gentoo[vaapi]
-# required by @selected
-# required by @world (argument)
-x11-libs/libva-vdpau-driver abi_x86_32
-# required by x11-drivers/nvidia-drivers-384.69::gentoo[X]
-# required by x11-base/xorg-drivers-1.19::gentoo[video_cards_nvidia]
-# required by x11-base/xorg-server-1.19.3::gentoo[xorg]
-# required by @selected
-# required by @world (argument)
-x11-libs/libvdpau abi_x86_32
-# required by x11-drivers/nvidia-drivers-384.69::gentoo[tools]
-# required by x11-base/xorg-drivers-1.19::gentoo[video_cards_nvidia]
-# required by x11-base/xorg-server-1.19.3::gentoo[xorg]
-# required by @selected
-# required by @world (argument)
-x11-libs/gdk-pixbuf X
-
-# broken
-=media-libs/openjpeg-2.3.0 -static-libs
-
 # firefox
-www-client/firefox bindist hwaccel pgo bindist
+www-client/firefox bindist hwaccel bindist
 x11-base/xorg-server xvfb
 dev-lang/python:2.7 sqlite
 media-libs/libpng apng
@@ -516,3 +499,6 @@ media-fonts/noto cjk
 
 # wireshark
 app-text/xmlto text
+
+# bind-tools
+net-dns/bind-tools urandom
