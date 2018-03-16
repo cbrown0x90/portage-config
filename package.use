@@ -22,7 +22,7 @@ sys-fs/lvm2 -thin -udev -readline
 #system
 sys-devel/gcc pgo
 sys-apps/coreutils gmp
-app-misc/pax-utils -seccomp
+app-misc/pax-utils -seccomp python_single_target_python3_6 python_targets_python3_6
 app-shells/bash -net
 dev-libs/gmp pgo
 net-misc/iputils -filecaps
@@ -44,7 +44,7 @@ app-portage/gemato python_targets_python3_6
 #gentoolkit
 sys-apps/gawk mpfr
 app-portage/gentoolkit python_targets_python3_6
-sys-apps/portage python_targets_python3_6
+sys-apps/portage python_targets_python3_6 rsync-verify
 
 #btrfs
 sys-fs/btrfs-progs -convert -zstd
@@ -167,6 +167,7 @@ dev-python/neovim-python-client python_targets_python3_6
 dev-python/msgpack python_targets_python3_6
 dev-python/greenlet python_targets_python3_6
 virtual/python-greenlet python_targets_python3_6
+dev-python/cython python_targets_python3_6
 dev-lua/lpeg luajit
 dev-lua/mpack luajit
 app-editors/neovim -jemalloc -nvimpager python
@@ -321,6 +322,7 @@ sys-devel/gdb -server -python
 #python dev
 dev-python/virtualenv python_targets_python3_6
 dev-python/setuptools python_targets_python3_6
+dev-python/virtualfish python_targets_python3_6
 
 #ncmpcpp
 dev-libs/boost icu nls
@@ -402,3 +404,10 @@ net-dns/bind-tools urandom
 dev-java/oracle-jdk-bin gtk3 alsa javafx
 
 net-libs/nodejs python_targets_python2_7
+
+net-misc/youtube-dl python_targets_python3_6
+
+# love
+media-libs/devil mng
+
+www-plugins/adobe-flash nsplugin -ppapi
