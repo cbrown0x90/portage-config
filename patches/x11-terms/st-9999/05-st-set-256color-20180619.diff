@@ -1,0 +1,11 @@
+--- a/x.c	2018-06-19 10:02:24.461957699 -0400
++++ b/x.c	2018-06-19 10:12:54.804181397 -0400
+@@ -720,7 +720,7 @@
+ 	XRenderColor color = { .alpha = 0xffff };
+
+ 	if (!name) {
+-		if (BETWEEN(i, 16, 255)) { /* 256 color */
++		if (BETWEEN(i, 16, 255) && !colorname[i]) { /* 256 color */
+ 			if (i < 6*6*6+16) { /* same colors as xterm */
+ 				color.red   = sixd_to_16bit( ((i-16)/36)%6 );
+ 				color.green = sixd_to_16bit( ((i-16)/6) %6 );
