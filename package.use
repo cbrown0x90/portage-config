@@ -116,9 +116,6 @@ media-gfx/feh xinerama
 #locker
 x11-misc/slock -filecaps
 
-#audio support
-media-libs/flac ogg cxx
-
 #cron
 sys-process/fcron -mta -system-crontab
 
@@ -127,7 +124,6 @@ sys-power/pm-utils alsa
 
 #email
 mail-client/mutt smtp imap sasl sidebar -lmdb gdbm pgp_classic
-#mail-client/mutt smtp imap sasl sidebar pgp_classic
 dev-libs/cyrus-sasl urandom
 
 #printing
@@ -148,21 +144,8 @@ x11-libs/libxkbcommon X
 x11-libs/libxcb xkb
 dev-libs/libpcre2 pcre16
 
-#tox
-net-im/qtox X
-dev-python/PyQt5 opengl multimedia
-dev-qt/qtmultimedia widgets openal
-dev-qt/qtwebkit opengl
-dev-util/scons python_targets_python2_7
-media-video/ffmpeg v4l webp vpx opus openal
-media-libs/libvpx postproc
-media-libs/openal alsa
-media-video/mpv openal
-dev-db/sqlcipher tcl
-dev-db/sqlite tcl
-x11-proto/xcb-proto python_targets_python3_6
-
 #neovim
+dev-util/cmake system-jsoncpp
 dev-python/neovim-python-client python_targets_python3_6
 dev-python/msgpack python_targets_python3_6
 dev-python/greenlet python_targets_python3_6
@@ -182,9 +165,6 @@ media-libs/libsndfile alsa
 games-emulation/mednafen alsa
 media-libs/libsdl joystick libcaca sound video X alsa opengl xinerama
 media-libs/audiofile flac
-
-#gnutls
-net-libs/gnutls -tools
 
 #openssl
 dev-libs/openssl -sslv3 gmp
@@ -301,6 +281,8 @@ dev-python/pyasn1-modules python_targets_python2_7
 dev-libs/protobuf python python_targets_python2_7
 dev-python/protobuf-python python_targets_python2_7
 dev-python/namespace-google python_targets_python2_7
+dev-python/entrypoints python_targets_python2_7
+dev-python/configparser python_targets_python2_7
 media-video/ffmpeg openssl encode
 
 #mpv
@@ -312,6 +294,7 @@ dev-python/docutils python_targets_python3_6
 app-text/qpdfview qt5 -sqlite dbus
 dev-qt/linguist-tools qml
 app-text/poppler qt5
+x11-base/xcb-proto python_targets_python3_6
 
 #irc
 net-irc/weechat python -spell python_targets_python2_7 python_single_target_python2_7 -python_single_target_python3_6
@@ -322,6 +305,9 @@ sys-devel/gdb -server -python
 #python dev
 dev-python/virtualenv python_targets_python3_6
 dev-python/setuptools python_targets_python3_6
+dev-python/xdg python_targets_python3_6
+dev-python/pkgconfig python_targets_python3_6
+dev-python/psutil python_targets_python3_6
 dev-python/virtualfish python_targets_python3_6
 
 #ncmpcpp
@@ -347,34 +333,23 @@ x11-terms/st savedconfig
 sys-libs/glibc debug
 
 #flac
+media-libs/flac ogg cxx
 app-cdr/cuetools flac
 media-sound/shntool flac
 
 #kernel
 sys-apps/busybox savedconfig
 
-#java
-dev-java/java-config python_targets_python3_6
-dev-java/javatoolkit python_targets_python2_7
-dev-java/icedtea-bin alsa gtk nsplugin cups
-dev-java/icedtea-web nsplugin
-
-#android
-sys-libs/zlib abi_x86_32
-dev-java/swt cairo
-
-#cmake
-dev-util/cmake system-jsoncpp
-
 #gimp
 media-gfx/gimp smp aalib alsa
 media-libs/libmypaint gegl
 media-libs/gegl cairo webp ffmpeg
 media-libs/libwebp swap-16bit-csp
+app-text/poppler cairo
 
 # meld
 dev-util/meld python_single_target_python3_6 python_targets_python3_6
-dev-libs/glib dbus
+dev-libs/glib dbus python_single_target_python3_6 python_targets_python3_6
 dev-python/pygobject cairo
 dev-util/itstool python_targets_python2_7
 dev-libs/libxml2 python python_targets_python2_7
@@ -397,17 +372,20 @@ media-fonts/noto cjk
 
 # wireshark
 app-text/xmlto text
+net-libs/gnutls -tools
 
 # bind-tools
 net-dns/bind-tools urandom
 
-dev-java/oracle-jdk-bin gtk3 alsa javafx
-
-net-libs/nodejs python_targets_python2_7
-
+# youtube-dl
 net-misc/youtube-dl python_targets_python3_6
 
 # love
 media-libs/devil mng
 
+#flash
 www-plugins/adobe-flash nsplugin -ppapi
+
+# phoenix
+x11-libs/wxGTK opengl
+net-libs/nodejs python_targets_python2_7
