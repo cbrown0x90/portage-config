@@ -1,9 +1,10 @@
---- st-tmp/config.def.h	2018-03-23 10:38:12.232707935 -0400
-+++ st/config.def.h	2018-03-23 10:31:16.813974423 -0400
+diff -aur a/config.def.h b/config.def.h
+--- a/config.def.h	2019-01-05 14:46:32.895931303 -0500
++++ b/config.def.h	2019-01-05 14:41:35.087297692 -0500
 @@ -82,6 +82,9 @@
   */
  unsigned int tabspaces = 8;
- 
+
 +/* bg opacity */
 +unsigned int alpha = 0xcc;
 +
@@ -16,26 +17,24 @@
  	"#555555",
 +	"black",
  };
- 
- 
---- st-tmp/config.mk	2018-03-23 10:35:41.537539811 -0400
-+++ st/config.mk	2018-03-23 10:31:16.813974423 -0400
-@@ -11,10 +11,10 @@
- X11LIB = /usr/X11R6/lib
- 
- # includes and libs
--INCS = -I$(X11INC) \
-+INCS = -I. -I/usr/include -I${X11INC} \
-        `pkg-config --cflags fontconfig` \
-        `pkg-config --cflags freetype2`
+
+
+diff -aur a/config.mk b/config.mk
+--- a/config.mk	2019-01-05 14:33:41.592750722 -0500
++++ b/config.mk	2019-01-05 14:45:00.298868727 -0500
+@@ -16,7 +16,7 @@
+ INCS = -I$(X11INC) \
+        `$(PKG_CONFIG) --cflags fontconfig` \
+        `$(PKG_CONFIG) --cflags freetype2`
 -LIBS = -L$(X11LIB) -lm -lrt -lX11 -lutil -lXft \
-+LIBS = -L/usr/lib -lc -L${X11LIB} -lm -lrt -lX11 -lutil -lXft -lXrender\
-        `pkg-config --libs fontconfig` \
-        `pkg-config --libs freetype2`
- 
---- st-tmp/st.h	2018-03-23 10:38:12.232707935 -0400
-+++ st/st.h	2018-03-23 10:34:11.729651744 -0400
-@@ -145,6 +145,7 @@
++LIBS = -L$(X11LIB) -lc -lm -lrt -lX11 -lutil -lXft -lXrender \
+        `$(PKG_CONFIG) --libs fontconfig` \
+        `$(PKG_CONFIG) --libs freetype2`
+
+diff -aur a/st.h b/st.h
+--- a/st.h	2019-01-05 14:46:32.896931325 -0500
++++ b/st.h	2019-01-05 14:41:35.099297959 -0500
+@@ -144,6 +144,7 @@
  extern int allowaltscreen;
  extern char *termname;
  extern unsigned int tabspaces;
@@ -43,12 +42,13 @@
  extern unsigned int defaultfg;
  extern unsigned int defaultbg;
  extern MouseKey mkeys[];
---- st-tmp/x.c	2018-03-23 10:38:12.232707935 -0400
-+++ st/x.c	2018-03-23 10:33:21.204589536 -0400
+diff -aur a/x.c b/x.c
+--- a/x.c	2019-01-05 14:46:32.897931347 -0500
++++ b/x.c	2019-01-05 14:41:35.103298048 -0500
 @@ -70,6 +70,9 @@
  #define TRUEGREEN(x)		(((x) & 0xff00))
  #define TRUEBLUE(x)		(((x) & 0xff) << 8)
- 
+
 +#define OPAQUE 0Xff
 +#define USE_ARGB (alpha != OPAQUE && opt_embed == NULL)
 +
@@ -63,18 +63,18 @@
  	int l, t; /* left and top offset */
  	int gm; /* geometry mask */
  } XWindow;
-@@ -696,7 +700,7 @@
- 
+@@ -698,7 +702,7 @@
+
  	XFreePixmap(xw.dpy, xw.buf);
  	xw.buf = XCreatePixmap(xw.dpy, xw.win, win.w, win.h,
 -			DefaultDepth(xw.dpy, xw.scr));
 +			xw.depth);
  	XftDrawChange(xw.draw, xw.buf);
  	xclear(0, 0, win.w, win.h);
- 
-@@ -756,6 +760,13 @@
+
+@@ -758,6 +762,13 @@
  			else
- 				die("Could not allocate color %d\n", i);
+ 				die("could not allocate color %d\n", i);
  		}
 +
 +	/* set alpha value of bg color */
@@ -85,11 +85,11 @@
 +	}
  	loaded = 1;
  }
- 
-@@ -777,6 +788,17 @@
+
+@@ -779,6 +790,17 @@
  	return 0;
  }
- 
+
 +void
 +xtermclear(int col1, int row1, int col2, int row2)
 +{
@@ -104,9 +104,9 @@
  /*
   * Absolute coordinates.
   */
-@@ -1015,7 +1037,40 @@
+@@ -1018,7 +1040,40 @@
  	if (!(xw.dpy = XOpenDisplay(NULL)))
- 		die("Can't open display\n");
+ 		die("can't open display\n");
  	xw.scr = XDefaultScreen(xw.dpy);
 -	xw.vis = XDefaultVisual(xw.dpy, xw.scr);
 +	xw.depth = (USE_ARGB) ? 32: XDefaultDepth(xw.dpy, xw.scr);
@@ -143,12 +143,12 @@
 +			exit(1);
 +		}
 +	}
- 
+
  	/* font */
  	if (!FcInit())
-@@ -1025,7 +1080,11 @@
+@@ -1028,7 +1083,11 @@
  	xloadfonts(usedfont, 0);
- 
+
  	/* colors */
 -	xw.cmap = XDefaultColormap(xw.dpy, xw.scr);
 +	if (!USE_ARGB)
@@ -157,9 +157,9 @@
 +		xw.cmap = XCreateColormap(xw.dpy, XRootWindow(xw.dpy, xw.scr),
 +				xw.vis, None);
  	xloadcols();
- 
+
  	/* adjust fixed window geometry */
-@@ -1048,16 +1107,15 @@
+@@ -1051,16 +1110,15 @@
  	if (!(opt_embed && (parent = strtol(opt_embed, NULL, 0))))
  		parent = XRootWindow(xw.dpy, xw.scr);
  	xw.win = XCreateWindow(xw.dpy, parent, xw.l, xw.t,
@@ -167,7 +167,7 @@
 +			win.w, win.h, 0, xw.depth, InputOutput,
  			xw.vis, CWBackPixel | CWBorderPixel | CWBitGravity
  			| CWEventMask | CWColormap, &xw.attrs);
- 
+
  	memset(&gcvalues, 0, sizeof(gcvalues));
  	gcvalues.graphics_exposures = False;
 -	dc.gc = XCreateGC(xw.dpy, parent, GCGraphicsExposures,
@@ -179,4 +179,4 @@
 +			GCGraphicsExposures, &gcvalues);
  	XSetForeground(xw.dpy, dc.gc, dc.col[defaultbg].pixel);
  	XFillRectangle(xw.dpy, xw.buf, dc.gc, 0, 0, win.w, win.h);
- 
+
