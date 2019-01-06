@@ -12,6 +12,7 @@ dev-python/m2crypto python_targets_python2_7
 dev-python/typing python_targets_python2_7
 dev-lang/swig ccache
 net-wireless/wpa_supplicant ap wps uncommon-eap-types wimax dbus qt5
+virtual/python-typing python_targets_python2_7
 
 #cryptsetup
 sys-fs/cryptsetup urandom openssl -gcrypt -nls -udev
@@ -44,7 +45,7 @@ app-portage/gemato python_targets_python3_6
 #gentoolkit
 sys-apps/gawk mpfr
 app-portage/gentoolkit python_targets_python3_6
-sys-apps/portage python_targets_python3_6 rsync-verify
+sys-apps/portage python_targets_python3_6 -rsync-verify
 
 #btrfs
 sys-fs/btrfs-progs -convert -zstd
@@ -79,6 +80,8 @@ media-libs/mesa gallium -vaapi xa -llvm -dri3 -nptl
 x11-base/xorg-server glamor xorg suid
 x11-drivers/xf86-video-intel dri dri3 sna
 x11-libs/libva opengl egl X
+dev-python/mako python_targets_python3_6
+dev-python/markupsafe python_targets_python3_6
 
 #image support
 media-libs/imlib2 X -mp3
@@ -131,7 +134,7 @@ net-print/cups dbus
 app-text/poppler cxx
 net-print/hplip snmp hpcups
 net-print/cups-filters -postscript
-dev-util/gdbus-codegen python_targets_python3_6
+dev-util/gdbus-codegen python_targets_python3_6 python_single_target_python3_6
 net-print/hplip python_targets_python3_6 python_single_target_python3_6
 dev-python/dbus-python python_targets_python3_6
 dev-python/pygobject python_targets_python3_6
@@ -228,20 +231,33 @@ dev-python/certifi python_targets_python2_7
 dev-python/namespace-zope python_targets_python2_7
 dev-python/service_identity python_targets_python2_7
 dev-util/meson python_targets_python3_6
-#
->=dev-python/urllib3-1.14 python_targets_python2_7
->=dev-python/enum34-1.1.3 python_targets_python2_7
->=dev-python/pyopenssl-16.0.0 python_targets_python2_7
->=dev-python/py-1.4.31 python_targets_python2_7
->=virtual/python-ipaddress-1.0 python_targets_python2_7
->=dev-python/backports-1.0 python_targets_python2_7
->=dev-python/cryptography-1.3.1 python_targets_python2_7
->=dev-python/PySocks-1.5.6 python_targets_python2_7
->=dev-python/pyasn1-0.1.9 python_targets_python2_7
->=dev-python/ndg-httpsclient-0.4.0 python_targets_python2_7
->=dev-python/chardet-2.3.0 python_targets_python2_7
->=dev-python/ipaddress-1.0.16 python_targets_python2_7
->=dev-python/idna-2.1 python_targets_python2_7
+dev-python/pycurl python_targets_python2_7
+dev-python/twisted python_targets_python2_7
+dev-python/automat python_targets_python2_7
+dev-python/constantly python_targets_python2_7
+dev-python/hyperlink python_targets_python2_7
+dev-python/incremental python_targets_python2_7
+dev-python/pyhamcrest python_targets_python2_7
+dev-python/soappy python_targets_python2_7
+dev-python/wstools python_targets_python2_7
+dev-python/defusedxml python_targets_python2_7
+dev-python/m2r python_targets_python2_7
+dev-python/mistune python_targets_python2_7
+dev-python/docutils python_targets_python2_7
+dev-python/cython python_targets_python2_7
+dev-python/urllib3 python_targets_python2_7
+dev-python/enum34 python_targets_python2_7
+dev-python/pyopenssl python_targets_python2_7
+dev-python/py python_targets_python2_7
+virtual/python-ipaddress python_targets_python2_7
+dev-python/backports python_targets_python2_7
+dev-python/cryptography python_targets_python2_7
+dev-python/PySocks python_targets_python2_7
+dev-python/pyasn1 python_targets_python2_7
+dev-python/ndg-httpsclient python_targets_python2_7
+dev-python/chardet python_targets_python2_7
+dev-python/ipaddress python_targets_python2_7
+dev-python/idna python_targets_python2_7
 #gmusic
 dev-python/six python_targets_python2_7
 dev-python/ply python_targets_python2_7
@@ -289,11 +305,13 @@ media-video/ffmpeg openssl encode
 media-plugins/gst-plugins-meta ffmpeg
 media-video/mpv -xv -uchardet libcaca python_targets_python3_6 cli drm -lua
 dev-python/docutils python_targets_python3_6
+dev-python/pygments python_targets_python2_7 python_targets_python3_6
 
 #pdf
 app-text/qpdfview qt5 -sqlite dbus
 dev-qt/linguist-tools qml
 app-text/poppler qt5
+dev-util/glib-utils python_single_target_python3_6 python_targets_python3_6
 x11-base/xcb-proto python_targets_python3_6
 
 #irc
@@ -362,6 +380,7 @@ dev-lang/python:2.7 sqlite
 media-libs/libpng apng
 sys-devel/clang python_targets_python2_7 -doc default-compiler-rt
 sys-devel/clang-runtime -openmp
+dev-lang/python:3.6 sqlite
 
 # testdisk
 app-admin/testdisk ewf ntfs
@@ -371,6 +390,7 @@ app-forensics/libewf bfio
 media-fonts/noto cjk
 
 # wireshark
+net-analyzer/wireshark python_targets_python3_6
 app-text/xmlto text
 net-libs/gnutls -tools
 
@@ -389,3 +409,9 @@ www-plugins/adobe-flash nsplugin -ppapi
 # phoenix
 x11-libs/wxGTK opengl
 net-libs/nodejs python_targets_python2_7
+
+# java
+dev-java/java-config python_targets_python3_6
+
+# net-im/qtox
+media-video/ffmpeg webp v4l
