@@ -1,3 +1,0 @@
-#bugs
-=sys-fs/lvm2-2.02.171
-dev-qt/*::qt
