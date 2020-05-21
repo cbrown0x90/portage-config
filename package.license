@@ -1,2 +1,5 @@
 # required by adobe-flash (argument)
 >=www-plugins/adobe-flash-28.0.0.161 AdobeFlash-11.x
+
+# testing
+=media-fonts/corefonts-1-r7 MSttfEULA
