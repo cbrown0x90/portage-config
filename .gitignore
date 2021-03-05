@@ -1,4 +1,7 @@
 make.profile
 repo.postsync.d
-savedconfig/sys-apps
-savedconfig/x11-misc
+savedconfig/sys-apps/busybox-*
+savedconfig/sys-firmware/ipxe-*
+savedconfig/sys-kernel/gentoo-kernel-*
+savedconfig/sys-kernel/linux-firmware-*
+savedconfig/x11-misc/dmenu-*
