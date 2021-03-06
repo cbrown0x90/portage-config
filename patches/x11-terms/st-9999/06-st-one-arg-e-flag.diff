@@ -1,0 +1,54 @@
+--- a/x.c	2021-02-17 23:11:59.029211826 -0500
++++ b/x.c	2021-02-17 23:26:57.191710320 -0500
+@@ -2044,7 +2044,38 @@
+
+ run:
+ 	if (argc > 0) /* eat all remaining arguments */
+-		opt_cmd = argv;
++	{
++		if (argc == 1)
++		{
++			// get amount of delims
++			// count starts at 2 for first token and NULL ptr at the end
++			int count = 2;
++			char *tmp = argv[0];
++			while((tmp = strchr(tmp, ' ')) != NULL)
++			{
++				count++;
++				tmp++;
++			}
++
++			opt_cmd = (char **)malloc(count * sizeof(char *));
++
++			char *delim = " ";
++			opt_cmd[0] = strtok(argv[0], delim);
++
++			for (int i = 1; i < count; i++)
++			{
++				opt_cmd[i] = strtok(NULL, delim);
++				if (opt_cmd[i] == NULL)
++					break;
++			}
++
++			opt_cmd[count - 1] = NULL;
++		}
++		else
++		{
++			opt_cmd = argv;
++		}
++	}
+
+ 	if (!opt_title)
+ 		opt_title = (opt_line || !opt_cmd) ? "st" : opt_cmd[0];
+@@ -2059,5 +2090,11 @@
+ 	selinit();
+ 	run();
+
++	if (argc == 1)
++	{
++		free(opt_cmd);
++		opt_cmd = NULL;
++	}
++
+ 	return 0;
+ }
