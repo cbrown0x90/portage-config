@@ -17,7 +17,7 @@ static const char *colors[][3]      = {
 
 static char* const autostart[][16] = { /* please replace 2 with maximum number of arguments from autostart array */
     { "picom", "-b", NULL },
-    { "xrdb", "/home/chris/.Xresources", NULL },
+    { "xrdb", ".Xresources", NULL },
     { "/home/chris/.scripts/dwm/locker", NULL },
     { "pulseaudio", "-D", NULL },
     { "/home/chris/Documents/dwm-bar/bar", NULL },
@@ -62,10 +62,12 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
+static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "j4-dmenu-desktop", "--no-generic", "--dmenu=dmenu -i -b -fn \"Gohu GohuFont\" -nb \"#222222\" -nf \"#bbbbbb\" -sb \"#bbbbbb\" -sf \"#222222\"", NULL };
 static const char *termcmd[]  = { "st", "-e", "fish", NULL };
+static const char *web[]  = { "firefox", NULL };
 static const char *lock[] = { "slock", NULL };
-static const char *screenshot[] = { "/home/chris/.scripts/screenshot" , NULL };
+static const char *screenshot[] = { "scrot", "-e", "mv $f Pictures/Screenshots", NULL };
 static const char *toggleLock[] = { "/home/chris/.scripts/toggle-lock", NULL };
 static const char *volup[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%", NULL };
 static const char *voldown[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL };
@@ -74,6 +76,7 @@ static const char *voldown[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "
 static Key keys[] = {
         /* modifier                     key            function        argument */
         { MODKEY,                       XK_d,          spawn,          {.v = dmenucmd } },
+        { MODKEY,                       XK_v,          spawn,          {.v = web } },
         { MODKEY,                       XK_Return,     spawn,          {.v = termcmd } },
         //{ MODKEY,                     XK_c,          spawn,          {.v = web } },
         { MODKEY,                       XK_b,          togglebar,      {0} },
@@ -90,11 +93,11 @@ static Key keys[] = {
         { MODKEY,                       XK_l,          setmfact,       {.f = +0.05} },
         { MODKEY,                       XK_Tab,        view,           {0} },
         { MODKEY|ShiftMask,             XK_q,          killclient,     {0} },
-        { MODKEY,                       XK_e,          setlayout,      {.v = &layouts[0]} },
+        { MODKEY,                       XK_t,          setlayout,      {.v = &layouts[0]} },
         { MODKEY,                       XK_f,          setlayout,      {.v = &layouts[1]} },
-        { MODKEY,                       XK_w,          setlayout,      {.v = &layouts[2]} },
+        { MODKEY,                       XK_s,          setlayout,      {.v = &layouts[2]} },
         { MODKEY,                       XK_p,          setlayout,      {.v = &layouts[3]} },
-        { MODKEY,                       XK_y,          setlayout,      {.v = &layouts[4]} },
+        //{ MODKEY,                       XK_y,        setlayout,      {.v = &layouts[4]} },
         { MODKEY,                       XK_space,      setlayout,      {0} },
         { MODKEY|ShiftMask,             XK_space,      togglefloating, {0} },
         { MODKEY,                       XK_0,          view,           {.ui = ~0 } },

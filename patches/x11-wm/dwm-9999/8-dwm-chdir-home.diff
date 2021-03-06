@@ -1,0 +1,10 @@
+--- a/dwm.c	2021-03-06 15:31:58.788482550 -0500
++++ b/dwm.c	2021-03-06 15:32:20.318625414 -0500
+@@ -2201,6 +2201,7 @@
+ 	if (!(dpy = XOpenDisplay(NULL)))
+ 		die("dwm: cannot open display");
+ 	checkotherwm();
++	chdir(getenv("HOME"));
+     autostart_exec();
+ 	setup();
+ #ifdef __OpenBSD__
