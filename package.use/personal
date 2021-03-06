@@ -1,0 +1,96 @@
+# required by app-emulation/virt-manager-2.2.1-r3::gentoo[gtk]
+# required by virt-manager (argument)
+>=net-misc/spice-gtk-0.37-r2 usbredir
+app-emulation/qemu spice usbredir aio alsa bzip2 fdt nls opengl gnutls infiniband iscsi jemalloc lzo nfs numa plugins python sasl sdl-image smartcard snappy ssh systemtap tci vde vhost-user-fs virgl virtfs vte gtk sdl pin-upstream-blobs
+app-emulation/libvirt parted virt-network
+app-emulation/virt-manager gtk
+>=sys-block/parted-3.2-r1 device-mapper
+>=net-dns/dnsmasq-2.82 script
+
+# nvidia
+x11-drivers/nvidia-drivers -multilib -abi_x86_32
+
+# sudo
+app-admin/sudo -sendmail
+
+# cryptsetup
+sys-fs/cryptsetup urandom
+sys-fs/lvm2 -thin
+
+# system
+sys-apps/debianutils -installkernel
+
+# sddm
+x11-misc/sddm -pam
+
+# portage
+sys-apps/portage -rsync-verify
+
+# cmake
+dev-util/cmake system-jsoncpp
+
+#fish
+dev-libs/libpcre2 pcre32
+
+#mpv
+media-video/mpv cli -lua
+
+# suckless
+x11-wm/dwm savedconfig
+x11-terms/st savedconfig
+
+# fonts
+media-fonts/noto cjk
+
+# kernel
+sys-kernel/genkernel -firmware
+sys-kernel/gentoo-kernel -initramfs
+
+# refind
+sys-boot/refind -ext2 -ext4 btrfs
+
+# rust
+dev-lang/rust system-llvm system-bootstrap
+
+# firefox
+www-client/firefox hwaccel bindist -pgo
+media-libs/libpng apng
+dev-lang/python sqlite
+dev-db/sqlite secure-delete
+media-libs/libvpx postproc
+>=net-misc/curl-7.71.1 http2
+
+# ffmpeg
+media-video/ffmpeg cpu_flags_x86_sse3 mp3
+
+# discord
+app-text/xmlto text
+>=app-text/ghostscript-gpl-9.52-r1 cups
+
+# neovim
+dev-lua/lpeg luajit
+
+# busybox
+sys-apps/busybox -pam
+
+# qtcore
+dev-libs/libpcre2 pcre16
+
+# java
+dev-java/openjdk gentoo-vm alsa
+
+# pwn
+>=dev-libs/capstone-4.0.2-r2 python
+dev-util/unicorn unicorn_targets_x86 unicorn_targets_m68k unicorn_targets_arm unicorn_targets_aarch64 unicorn_targets_mips unicorn_targets_sparc
+sci-mathematics/z3 python
+dev-libs/keystone python
+
+# pass
+app-admin/pass dmenu fish-completion
+app-crypt/pinentry qt5
+
+# xorg TOOD
+x11-base/xorg-server suid
+
+# printing
+net-print/cups zeroconf
