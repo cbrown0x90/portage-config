@@ -38,6 +38,7 @@ media-video/mpv cli -lua
 # suckless
 x11-wm/dwm savedconfig
 x11-terms/st savedconfig
+x11-misc/slock savedconfig
 
 # fonts
 media-fonts/noto cjk
@@ -53,7 +54,7 @@ sys-boot/refind -ext2 -ext4 btrfs
 dev-lang/rust system-llvm system-bootstrap
 
 # firefox
-www-client/firefox hwaccel bindist -pgo
+www-client/firefox hwaccel bindist -pgo dbus
 media-libs/libpng apng
 dev-lang/python sqlite
 dev-db/sqlite secure-delete
@@ -88,9 +89,6 @@ dev-libs/keystone python
 # pass
 app-admin/pass dmenu fish-completion
 app-crypt/pinentry qt5
-
-# xorg TOOD
-x11-base/xorg-server suid
 
 # printing
 net-print/cups zeroconf
