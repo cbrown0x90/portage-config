@@ -18,7 +18,7 @@ static const char *colors[][3]      = {
 static char* const autostart[][16] = { /* please replace 2 with maximum number of arguments from autostart array */
     { "picom", "-b", NULL },
     { "xrdb", ".Xresources", NULL },
-    { "/home/chris/.scripts/dwm/locker", NULL },
+    { "/usr/local/bin/simple-locker", NULL },
     { "pulseaudio", "-D", NULL },
     { "/home/chris/Documents/dwm-bar/bar", NULL },
 };
@@ -68,7 +68,6 @@ static const char *termcmd[]  = { "st", "-e", "fish", NULL };
 static const char *web[]  = { "firefox", NULL };
 static const char *lock[] = { "slock", NULL };
 static const char *screenshot[] = { "scrot", "-e", "mv $f Pictures/Screenshots", NULL };
-static const char *toggleLock[] = { "/home/chris/.scripts/toggle-lock", NULL };
 static const char *volup[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%", NULL };
 static const char *voldown[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL };
 
@@ -81,7 +80,6 @@ static Key keys[] = {
         //{ MODKEY,                     XK_c,          spawn,          {.v = web } },
         { MODKEY,                       XK_b,          togglebar,      {0} },
         { 0,                            XK_Print,      spawn,          {.v = screenshot } },
-        { 0,                            XK_F4,         spawn,          {.v = toggleLock } },
         { MODKEY|ShiftMask,             XK_l,          spawn,          {.v = lock } },
         { MODKEY,                       XK_Left,       focusstack,     {.i = -1 } },
         { MODKEY,                       XK_Right,      focusstack,     {.i = +1 } },
