@@ -1,7 +1,7 @@
 # required by app-emulation/virt-manager-2.2.1-r3::gentoo[gtk]
 # required by virt-manager (argument)
 >=net-misc/spice-gtk-0.37-r2 usbredir
-app-emulation/qemu spice usbredir aio alsa bzip2 fdt nls opengl gnutls infiniband iscsi jemalloc lzo nfs numa plugins python sasl sdl-image smartcard snappy ssh systemtap tci vde vhost-user-fs virgl virtfs vte gtk sdl pin-upstream-blobs
+app-emulation/qemu spice usbredir aio alsa bzip2 fdt nls opengl gnutls infiniband iscsi jemalloc lzo nfs numa plugins python sasl sdl-image smartcard snappy ssh systemtap tci vde vhost-user-fs virgl virtfs vte gtk sdl pin-upstream-blobs usb udev -doc qemu_softmmu_targets_x86_64 qemu_softmmu_targets_arm qemu_softmmu_targets_mips qemu_softmmu_targets_mips64 qemu_softmmu_targets_mips64el qemu_softmmu_targets_mipsel
 app-emulation/libvirt parted virt-network
 app-emulation/virt-manager gtk
 >=sys-block/parted-3.2-r1 device-mapper
@@ -9,6 +9,7 @@ app-emulation/virt-manager gtk
 
 # nvidia
 x11-drivers/nvidia-drivers -multilib -abi_x86_32
+x11-misc/picom opengl
 
 # sudo
 app-admin/sudo -sendmail
@@ -60,6 +61,7 @@ dev-lang/python sqlite
 dev-db/sqlite secure-delete
 media-libs/libvpx postproc
 >=net-misc/curl-7.71.1 http2
+>=media-libs/freetype-2.10.4 harfbuzz
 
 # ffmpeg
 media-video/ffmpeg cpu_flags_x86_sse3 mp3
@@ -82,7 +84,7 @@ dev-java/openjdk gentoo-vm alsa
 
 # pwn
 >=dev-libs/capstone-4.0.2-r2 python
-dev-util/unicorn unicorn_targets_x86 unicorn_targets_m68k unicorn_targets_arm unicorn_targets_aarch64 unicorn_targets_mips unicorn_targets_sparc
+dev-util/unicorn python unicorn_targets_x86 unicorn_targets_m68k unicorn_targets_arm unicorn_targets_aarch64 unicorn_targets_mips unicorn_targets_sparc
 sci-mathematics/z3 python
 dev-libs/keystone python
 
@@ -92,3 +94,18 @@ app-crypt/pinentry qt5
 
 # printing
 net-print/cups zeroconf
+>=net-dns/avahi-0.8-r4 python
+>=dev-python/PyQt5-5.15.4-r1 dbus widgets gui
+
+# Python 3.9
+net-print/hplip -python_single_target_python3_10 python_single_target_python3_9
+net-dns/avahi -python_single_target_python3_10 python_single_target_python3_9
+>=dev-python/six-1.16.0 python_targets_python3_9
+dev-python/pygobject python_targets_python3_9
+dev-python/dbus-python python_targets_python3_9
+dev-python/pycairo python_targets_python3_9
+dev-python/setuptools python_targets_python3_9
+dev-python/setuptools_scm python_targets_python3_9
+dev-python/packaging python_targets_python3_9
+dev-python/pyparsing python_targets_python3_9
+dev-python/tomli python_targets_python3_9
