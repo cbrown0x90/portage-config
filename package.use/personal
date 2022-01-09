@@ -18,12 +18,6 @@ app-admin/sudo -sendmail
 sys-fs/cryptsetup urandom
 sys-fs/lvm2 -thin
 
-# system
-sys-apps/debianutils -installkernel
-
-# sddm
-x11-misc/sddm -pam
-
 # portage
 sys-apps/portage -rsync-verify
 
@@ -32,9 +26,6 @@ dev-util/cmake system-jsoncpp
 
 #fish
 dev-libs/libpcre2 pcre32
-
-#mpv
-media-video/mpv cli -lua
 
 # suckless
 x11-wm/dwm savedconfig
@@ -48,20 +39,13 @@ media-fonts/noto cjk
 sys-kernel/genkernel -firmware
 sys-kernel/gentoo-kernel -initramfs
 
-# refind
-sys-boot/refind -ext2 -ext4 btrfs
-
 # rust
 dev-lang/rust system-llvm system-bootstrap
 
 # firefox
-www-client/firefox hwaccel bindist -pgo dbus
+www-client/firefox dbus hwaccel -pgo
 media-libs/libpng apng
-dev-lang/python sqlite
-dev-db/sqlite secure-delete
 media-libs/libvpx postproc
->=net-misc/curl-7.71.1 http2
->=media-libs/freetype-2.10.4 harfbuzz
 
 # ffmpeg
 media-video/ffmpeg cpu_flags_x86_sse3 mp3
@@ -69,22 +53,14 @@ media-video/ffmpeg cpu_flags_x86_sse3 mp3
 # discord
 app-text/xmlto text
 >=app-text/ghostscript-gpl-9.52-r1 cups
-
-# neovim
-dev-lua/lpeg luajit
-
-# busybox
-sys-apps/busybox -pam
-
-# qtcore
-dev-libs/libpcre2 pcre16
+>=sys-libs/glibc-2.34-r3 -clone3
 
 # java
 dev-java/openjdk gentoo-vm alsa
 
 # pwn
 >=dev-libs/capstone-4.0.2-r2 python
-dev-util/unicorn python unicorn_targets_x86 unicorn_targets_m68k unicorn_targets_arm unicorn_targets_aarch64 unicorn_targets_mips unicorn_targets_sparc
+dev-util/unicorn python unicorn_targets_x86 unicorn_targets_m68k unicorn_targets_arm unicorn_targets_aarch64 unicorn_targets_mips unicorn_targets_sparc unicorn_targets_ppc unicorn_targets_riscv
 sci-mathematics/z3 python
 dev-libs/keystone python
 
@@ -95,17 +71,9 @@ app-crypt/pinentry qt5
 # printing
 net-print/cups zeroconf
 >=net-dns/avahi-0.8-r4 python
->=dev-python/PyQt5-5.15.4-r1 dbus widgets gui
 
-# Python 3.9
-net-print/hplip -python_single_target_python3_10 python_single_target_python3_9
-net-dns/avahi -python_single_target_python3_10 python_single_target_python3_9
->=dev-python/six-1.16.0 python_targets_python3_9
-dev-python/pygobject python_targets_python3_9
-dev-python/dbus-python python_targets_python3_9
-dev-python/pycairo python_targets_python3_9
-dev-python/setuptools python_targets_python3_9
-dev-python/setuptools_scm python_targets_python3_9
-dev-python/packaging python_targets_python3_9
-dev-python/pyparsing python_targets_python3_9
-dev-python/tomli python_targets_python3_9
+# smartmontools
+sys-apps/smartmontools -daemon
+
+# cron
+sys-process/fcron -mta
