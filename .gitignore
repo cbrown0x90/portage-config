@@ -1,5 +1,6 @@
 make.profile
 repo.postsync.d
+smart-live-rebuild.conf
 savedconfig/sys-apps/busybox-*
 savedconfig/sys-firmware/ipxe-*
 savedconfig/sys-kernel/gentoo-kernel-*
