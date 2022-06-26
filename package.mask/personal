@@ -1,0 +1,9 @@
+# Beta python version
+=dev-lang/python-3.11.0_beta1-r2
+=dev-lang/python-3.11.0_beta2_p1
+=dev-lang/python-3.11.0_beta3
+
+# Java stuff
+=dev-java/openjdk-bin-11.0.15_p10
+=virtual/jdk-17
+=virtual/jre-17
