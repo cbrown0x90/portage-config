@@ -41,9 +41,6 @@ sys-kernel/gentoo-kernel -initramfs
 
 # rust
 dev-lang/rust system-llvm system-bootstrap
-<=sys-libs/compiler-rt-14.0.1 -abi_x86_32
-<=sys-libs/compiler-rt-sanitizers-14.0.1 -abi_x86_32
-<=sys-devel/clang-runtime-14.0.1 -abi_x86_32
 
 # firefox
 www-client/firefox dbus hwaccel -pgo
@@ -66,6 +63,7 @@ dev-java/openjdk gentoo-vm alsa
 dev-util/unicorn python unicorn_targets_x86 unicorn_targets_m68k unicorn_targets_arm unicorn_targets_aarch64 unicorn_targets_mips unicorn_targets_sparc unicorn_targets_ppc unicorn_targets_riscv
 sci-mathematics/z3 python
 dev-libs/keystone python
+sys-fs/squashfs-tools lzma lzo zstd
 
 # pass
 app-admin/pass dmenu fish-completion
